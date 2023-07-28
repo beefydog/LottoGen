@@ -14,7 +14,7 @@ namespace LottoGenWeb.Pages
         }
 
         // data for prepopulating the child NumberGroup components
-        List<NumberGroup> NGs = new List<NumberGroup>()
+        List<NumberGroup> NGs = new()
         {new NumberGroup(1, true, 1, 70, 5, 15, true, true), new NumberGroup(2, true, 1, 25, 1, 15, false, false), new NumberGroup(3, false, 1, 5, 1, 15, false, false)};
         string[] colors = new string[3] { "#03a9f4", "#e64a19", "#aa00ff" };
         List<string> BGColors = new();
@@ -90,7 +90,7 @@ namespace LottoGenWeb.Pages
                 Console.WriteLine("Error! " + ex.ToString());
             }
 
-            return retval != null ? retval : new int[][] { new int[] { 0 } };
+            return retval ?? (new int[][] { new int[] { 0 } });
         }
     }
 }
