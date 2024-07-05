@@ -6,14 +6,9 @@ using LottoGenApi.Models;
 namespace LottoGenApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public sealed class NumberSetsController : ControllerBase, INumberSetsController
+public sealed class NumberSetsController(ILogger<NumberSetsController> logger) : ControllerBase, INumberSetsController
 {
-    private readonly ILogger<NumberSetsController> _logger;
-
-    public NumberSetsController(ILogger<NumberSetsController> logger)
-    {
-        _logger = logger;
-    }
+    private readonly ILogger<NumberSetsController> _logger = logger;
 
     [HttpPost]
     public async Task<IActionResult> GetAsync(Models.SetsRequest setsRequest)
@@ -26,12 +21,12 @@ public sealed class NumberSetsController : ControllerBase, INumberSetsController
         //bool[] SumCheck = { true, true, false }; // divergence included for groups 1 & 2, but group 3 is set to false (ignoring divergence number above)
         //bool[] OECheck = { true, false, false }; // odd/even ratio check is enabled for group 1, disabled for groups 2&3
 
-        int[] Min = Array.Empty<int>();
-        int[] Max = Array.Empty<int>();
-        int[] NumbersPerGroup = Array.Empty<int>();
-        decimal[] Divergence = Array.Empty<decimal>();
-        bool[] SumCheck = Array.Empty<bool>();
-        bool[] OECheck = Array.Empty<bool>();
+        int[] Min = [];
+        int[] Max = [];
+        int[] NumbersPerGroup = [];
+        decimal[] Divergence = [];
+        bool[] SumCheck = [];
+        bool[] OECheck = [];
 
         //populate the arrays with the request values
         foreach (var r in setsRequest.NumberSet)

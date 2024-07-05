@@ -10,14 +10,8 @@ public sealed class NumberGroup
     public bool OeCheck { get; set; }
 }
 
-public sealed class SetsRequest
+public sealed class SetsRequest(List<NumberGroup> numberSet, int sets)
 {
-    public SetsRequest(List<NumberGroup> numberSet, int sets)
-    {
-        this.NumberSet = numberSet ?? throw new ArgumentNullException(nameof(numberSet));
-        this.Sets = sets;
-    }
-
-    public List<NumberGroup> NumberSet { get; set; }
-    public int Sets { get; set; }
+    public List<NumberGroup> NumberSet { get; set; } = numberSet ?? throw new ArgumentNullException(nameof(numberSet));
+    public int Sets { get; set; } = sets;
 }

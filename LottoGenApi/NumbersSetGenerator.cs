@@ -42,7 +42,7 @@ internal sealed class NumbersSetGenerator
     {
         //this one takes in multiple groups as input
         int bits = 4;
-        List<int[]> results = new();
+        List<int[]> results = [];
 
         await Task.Run(() =>
         {

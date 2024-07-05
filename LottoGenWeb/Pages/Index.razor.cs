@@ -14,12 +14,11 @@ namespace LottoGenWeb.Pages
         }
 
         // data for prepopulating the child NumberGroup components
-        List<NumberGroup> NGs = new()
-        {new NumberGroup(1, true, 1, 70, 5, 15, true, true), new NumberGroup(2, true, 1, 25, 1, 15, false, false), new NumberGroup(3, false, 1, 5, 1, 15, false, false)};
-        string[] colors = new string[3] { "#03a9f4", "#e64a19", "#aa00ff" };
-        List<string> BGColors = new();
+        readonly List<NumberGroup> NGs = [new NumberGroup(1, true, 1, 70, 5, 15, true, true), new NumberGroup(2, true, 1, 25, 1, 15, false, false), new NumberGroup(3, false, 1, 5, 1, 15, false, false)];
+        readonly string[] colors = ["#03a9f4", "#e64a19", "#aa00ff"];
+        readonly List<string> BGColors = [];
         public int NumberOfSets { get; set; } = 10;
-        public int[][] Numbersets { get; set; } = new int[][] { new int[] { 0 } }; //init with 1st array element (of parent array) to 0    // number sets returned as jagged array from api
+        public int[][] Numbersets { get; set; } = [[0]]; //init with 1st array element (of parent array) to 0    // number sets returned as jagged array from api
         public int NumberSetCount { get; set; } = 0; // for display purposes
         protected override void OnInitialized() //so far, not calling async methods from here, so using synchronous method
         {
@@ -39,7 +38,7 @@ namespace LottoGenWeb.Pages
         protected void ClearResults()
         {
             NumberSetCount = 0;
-            Numbersets = new int[][] { new int[] { 0 } };
+            Numbersets = [[0]];
         }
 
         private async Task ProcessForm()
@@ -90,7 +89,7 @@ namespace LottoGenWeb.Pages
                 Console.WriteLine("Error! " + ex.ToString());
             }
 
-            return retval ?? (new int[][] { new int[] { 0 } });
+            return retval ?? ([[0]]);
         }
     }
 }

@@ -68,6 +68,7 @@ internal static class RandomNumberProcedures
 
     /// <summary>
     /// Returns a single random integer between min and max via the random boolean generator
+    /// It assembles a string from random 1's and 0's 
     /// </summary>
     /// <param name="min"></param>
     /// <param name="max"></param>
