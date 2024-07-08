@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HostFiltering;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,27 +12,23 @@ namespace LottoGenApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllers();
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             // Configure CORS policy to allow all
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy =>
+                options.AddPolicy("AllowSpecificOrigins", policy =>
                 {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
+                    policy.WithOrigins("https://www.miraclecat.com","https://miraclecat.com")
+                    .WithMethods("POST")
+                    .WithHeaders("Authorization", "Content-Type", "Accept", "X-Custom-Header");
                 });
             });
 
             var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -41,7 +38,7 @@ namespace LottoGenApi
             app.UseHttpsRedirection();
 
             // Apply the CORS policy before any other middleware that handles requests
-            app.UseCors("AllowAll");
+            app.UseCors("AllowSpecificOrigins");
 
             app.UseAuthorization();
 
