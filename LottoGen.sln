@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LottoGenWeb", "LottoGenWeb\LottoGenWeb.csproj", "{5E4FAFB6-9996-4A32-9DF3-34E9DD0BE3A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoGenApi", "LottoGenApi\LottoGenApi.csproj", "{1FEA15E1-255F-4239-BDEC-DFD4955F646B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LottoGenApi", "LottoGenApi\LottoGenApi.csproj", "{1FEA15E1-255F-4239-BDEC-DFD4955F646B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

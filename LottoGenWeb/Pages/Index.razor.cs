@@ -45,16 +45,15 @@ namespace LottoGenWeb.Pages
         {
             ToggleSpinner(true);
             ClearResults();
-            Models.Root postData = new()
-            { sets = NumberOfSets };
+            Models.Root postData = new() { Sets = NumberOfSets };
             BGColors.Clear();
             int colorIndex = 0;
             foreach (NumberGroup n in NGs)
             {
                 if (n.Enabled)
                 {
-                    postData.numberSet.Add(new Models.NumberGroupRequest()
-                    { numbersPerGroup = n.NumbersPerGroup, min = n.MinValue, max = n.MaxValue, divergence = n.Divergence, oeCheck = n.CheckOEEnabled, sumCheck = n.CheckSumEnabled });
+                    postData.NumberSet.Add(new Models.NumberGroupRequest()
+                    { NumbersPerGroup = n.NumbersPerGroup, Min = n.MinValue, Max = n.MaxValue, Divergence = n.Divergence, OeCheck = n.CheckOEEnabled, SumCheck = n.CheckSumEnabled });
                     //the following is to create a list of background colors via numbergroup for final display
                     for (int i = 0; i < n.NumbersPerGroup; i++)
                     {
