@@ -1,9 +1,11 @@
-﻿namespace LottoGenApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
+namespace LottoGenApi.Models;
+[Keyless]
 public sealed class Lottery
 {
     public string? Location { get; set; }
-    public string? LotteryName { get; set; }
+    public string? Name { get; set; }
     public int? Min1 { get; set; }
     public int? Max1 { get; set; }
     public int? NumbersPerGroup1 { get; set; }
