@@ -1,0 +1,61 @@
+﻿@page "/"
+<div class="text-center">
+    <h1>Lotto Generator</h1>
+    <h2>Number Sets</h2>
+    <div class="form-group form-control-sm">
+        <p></p>
+        <div class="card">
+            <div class="card-header px-3">
+                Number Groupings (up to 3 per number set)
+            </div>
+            <div class="card-body px-5">
+                <BlockNumberGroup Ng="NGs[0]" OnItemChange="HandleGroupChange" />
+                <hr />
+                <BlockNumberGroup Ng="NGs[1]" OnItemChange="HandleGroupChange" />
+                <hr />
+                <BlockNumberGroup Ng="NGs[2]" OnItemChange="HandleGroupChange" />
+            </div>
+            <div class="card-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <div id="progress" class="align-self-center" hidden="@(HideSpinner)">
+                                <div class="spinner-grow text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="numberOfSets" class="form-label">Number Of Sets</label>
+                            <input type="range" id="numberOfSets" role="slider" class="form-range" min="1" max="20" step="1" @bind="NumberOfSets" @oninput="@((e) => NumberOfSets = Convert.ToInt32(e.Value))" />
+                            <input type="number" id="numberOfSetsVal" role="spinbutton" class="form-control" @bind="NumberOfSets" />
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <button type="submit" id="btnget" role="button" class="btn btn-primary align-self-center" @onclick="ProcessForm">Generate Numbers</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br /><br /><br />
+    <div id="results">
+        @if (Numbersets[0][0] != 0) // Check to see if actual data
+        {
+            @foreach (int[] numberset in Numbersets)
+            {
+                int idx = 0;
+                <div>
+                    @foreach (int number in numberset)
+                    {
+                        <span class="badge h2" style="background-color: @(BGColors[idx])">@number.ToString()</span>
+                        idx++;
+                    }
+                </div>
+            }
+        }
+    </div>
+
+</div>

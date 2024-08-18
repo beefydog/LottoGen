@@ -1,0 +1,10 @@
+﻿#results div {
+    padding: 8px;
+}
+
+    #results div span {
+        width: 50px;
+        padding: 2px;
+        margin: 4px;
+        background-color: gray;
+    }

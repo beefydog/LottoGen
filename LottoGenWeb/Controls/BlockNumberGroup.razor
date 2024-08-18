@@ -1,0 +1,44 @@
+﻿<div class="container" id="Group@(Ng.GroupId)">
+    <div class="row">
+        <div class="col">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="chkGroup@(Ng.GroupId)" class="custom-control-input" role="checkbox" @bind="Ng.Enabled" @onfocusout="() => HandleChange()" @onclick="() => HandleChange()" />
+                <label class="custom-control-label fs-5" for="chkGroup@(Ng.GroupId)">&nbsp;Group&nbsp;@(Ng.GroupId)</label>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="groupMin@(Ng.GroupId)" class="form-label">Minimum</label>
+            <input type="range" id="groupMin@(Ng.GroupId)" class="form-range" min="1" max="127" step="1" role="slider" @bind="Ng.MinValue" @oninput="@((e) => Ng.MinValue = Convert.ToInt32(e.Value))" @onfocusout="() => HandleChange()" />
+            <input type="number" id="groupMin@(Ng.GroupId)Val" class="form-control" min="1" max="127" role="spinbutton" @bind="Ng.MinValue" @onfocusout="() => HandleChange()" @onclick="() => HandleChange()" />
+        </div>
+        <div class="col">
+            <label for="groupMax@(Ng.GroupId)" class="form-label">Maximum</label>
+            <input type="range" id="groupMax@(Ng.GroupId)" class="form-range" min="1" max="255" step="1" role="slider" @bind="Ng.MaxValue" @oninput="@((e) => Ng.MaxValue = Convert.ToInt32(e.Value))" @onfocusout="() => HandleChange()" />
+            <input type="number" id="groupMax@(Ng.GroupId)Val" class="form-control" min="1" max="255" role="spinbutton" @bind="Ng.MaxValue" @onfocusout="() => HandleChange()" @onclick="() => HandleChange()" />
+        </div>
+        <div class="col">
+            <label for="numbersPerGroup@(Ng.GroupId)" class="form-label">Numbers</label>
+            <input type="range" id="numbersPerGroup@(Ng.GroupId)" class="form-range" min="1" max="10" step="1" role="slider" @bind="Ng.NumbersPerGroup" @oninput="@((e) => Ng.NumbersPerGroup  = Convert.ToInt32(e.Value))" @onfocusout="() => HandleChange()" />
+            <input type="number" id="numbersPerGroup@(Ng.GroupId)Val" class="form-control" min="1" max="10" role="spinbutton" @bind="Ng.NumbersPerGroup" @onfocusout="() => HandleChange()" @onclick="() => HandleChange()" />
+        </div>
+        <div class="col">
+            <label for="divergence@(Ng.GroupId)" class="form-label">Divergence</label>
+            <input type="range" id="divergence@(Ng.GroupId)" class="form-range" min="1" max="50" step="1" role="slider" @bind="Ng.Divergence" @oninput="@((e) => Ng.Divergence = Convert.ToInt32(e.Value))" @onfocusout="() => HandleChange()" />
+            <input type="number" id="divergence@(Ng.GroupId)Val" class="form-control" min="1" max="50" role="spinbutton" @bind="Ng.Divergence" @onfocusout="() => HandleChange()" @onclick="() => HandleChange()" />
+        </div>
+        <div class="col">
+            <label class="form-label">Checks</label>
+            <div class="form-check form-switch" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" role="switch" id="checkSum@(Ng.GroupId)" @bind="Ng.CheckSumEnabled" @onfocusout="() => HandleChange()" />
+                <label class="form-check-label" for="checkSum@(Ng.GroupId)">Sum</label>
+            </div>
+            <div class="form-check form-switch" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" role="switch" id="checkOE@(Ng.GroupId)" @bind="Ng.CheckOEEnabled" @onfocusout="() => HandleChange()" />
+                <label class="form-check-label" for="checkOE@(Ng.GroupId)">OddEven</label>
+            </div>
+        </div>
+    </div>
+</div>
